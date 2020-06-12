@@ -2,6 +2,7 @@ package ru.netology.manager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.NotFoundException;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
@@ -26,6 +27,18 @@ class ProductManagerTest {
         manager.add(smartphone2);
     }
 
+    @Test
+    void shouldRemoveByValidId() {
+        String expected = null;
+        repository.removeById(2);
+        assertEquals(expected, repository.findById(2));
+    }
+
+    @Test
+    void shouldRemoveByInvalidId() {
+        assertEquals(null, repository.removeById(3));
+    }
+    
     @Test
     void shouldSearchByNameBook() {
         Product[] expected = new Product[]{book1};
