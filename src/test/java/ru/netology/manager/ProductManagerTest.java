@@ -8,6 +8,8 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
+import java.io.UncheckedIOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
@@ -36,9 +38,9 @@ class ProductManagerTest {
 
     @Test
     void shouldRemoveByInvalidId() {
-        assertEquals(null, repository.removeById(3));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> repository.removeById(5));
     }
-    
+
     @Test
     void shouldSearchByNameBook() {
         Product[] expected = new Product[]{book1};
