@@ -36,7 +36,7 @@ class ProductManagerTest {
 
     @Test
     void shouldRemoveByInvalidId() {
-        assertThrows(NotFoundException.class, () -> repository.removeById(5));
+        assertThrows(NotFoundException.class, () -> repository.removeById(4));
     }
 
     @Test
